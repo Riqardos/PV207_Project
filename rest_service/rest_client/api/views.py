@@ -18,8 +18,10 @@ class IncidentSerializer(serializers.ModelSerializer):
 class VehicleViewSet(viewsets.ModelViewSet):
     serializer_class = VehicleSerializer
     queryset = Vehicle.objects.all()
+    permission_classes = ()
 
 
 class IncidentViewSet(viewsets.ModelViewSet):
     serializer_class = IncidentSerializer
     queryset = Incident.objects.all()
+    permission_classes = ()
