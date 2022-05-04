@@ -19,7 +19,7 @@ jack        jack        analyst,IT,kie-server
 ```
 # pull and run docker web app should be running on http://localhost:8080/business-central/ 
 # first run can take a while
-docker run -p 8080:8080 -p 8001:8001 -d --name jbpm-server-full jboss/jbpm-server-full:latest
+docker run -p 8080:8080 -p 8001:8001 -p 8000:8000 -d --name jbpm-server-full jboss/jbpm-server-full:latest
 
 # to show logs run 
 docker logs -f --tail 100 jbpm-server-full
