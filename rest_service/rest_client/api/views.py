@@ -99,6 +99,33 @@ class IncidentViewSet(viewsets.ModelViewSet):
         res = IncidentSerializer(instance=instance)
         return Response(res.data, status=status.HTTP_201_CREATED, headers=headers)
 
+    @action(detail=True, methods=['post'])
+    def set_in_progress(self, request, pk=None):
+        incident = Incident.objects.get(pk=pk)
+        incident.state = 'I'
+        incident.save()
+
+        res = IncidentSerializer(instance=incident)
+        return Response(res.data, status=status.HTTP_200_OK)
+    
+    @action(detail=True, methods=['post'])
+    def set_declined(self, request, pk=None):
+        incident = Incident.objects.get(pk=pk)
+        incident.state = 'D'
+        incident.save()
+
+        res = IncidentSerializer(instance=incident)
+        return Response(res.data, status=status.HTTP_200_OK)
+    
+    @action(detail=True, methods=['post'])
+    def set_resolved(self, request, pk=None):
+        incident = Incident.objects.get(pk=pk)
+        incident.state = 'R'
+        incident.save()
+
+        res = IncidentSerializer(instance=incident)
+        return Response(res.data, status=status.HTTP_200_OK)
+
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
