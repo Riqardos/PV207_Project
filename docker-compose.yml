@@ -10,7 +10,13 @@ services:
     ports:
       - "8000:8000"
   jbpm-service:
-    image: jboss/jbpm-server-full:custom
+    image: jboss/jbpm-server-full:latest
     ports:
       - "8080:8080"
       - "8001:8001"
+  mail:
+    image: adampresley/mailslurper
+    ports:
+      - "2500:2500"
+      - "8085:8085"
+      - "8081:8080"
